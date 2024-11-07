@@ -1,0 +1,27 @@
+int led_pin=13;
+int buz_pin=12;
+int pir_sensor=8;
+int out=HIGH
+
+void setup(){
+    Serial.begin(9600);
+    PinMode(led_pin, OUTPUT);
+    PinMode(buz_pin, OUTPUT);
+    PinMode(pir_sensor, INPUT);
+}
+
+void loop(){
+    out=digitalRead(pir_sensor);
+    if(out==LOW){
+        digitalWrite(led_pin, HIGH);
+        digitalWrite(buz_pin, HIGH);
+        Serial.println('Motion Detected');
+
+        delay(100);
+    }else{
+        digitalWrite(led_pin, LOW);
+        digitalWrite(buz_pin, LOW);
+    }
+
+    delay(100);
+}
